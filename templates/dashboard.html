@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Dashboard: Dependencia hacia la Inteligencia Artificial</h2>
+    <p class="text-center lead">Visualización de cómo influye la IA en distintos ámbitos de la vida</p>
+
+    <div class="my-4">
+        <canvas id="graficoIA" height="100"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('graficoIA').getContext('2d');
+        const graficoIA = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Educación', 'Entretenimiento', 'Trabajo', 'Salud'],
+                datasets: [{
+                    label: '% de dependencia estimada',
+                    data: [85, 92, 78, 65],
+                    backgroundColor: [
+                        'rgba(75, 0, 130, 0.7)',
+                        'rgba(106, 90, 205, 0.7)',
+                        'rgba(123, 104, 238, 0.7)',
+                        'rgba(147, 112, 219, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 0, 130, 1)',
+                        'rgba(106, 90, 205, 1)',
+                        'rgba(123, 104, 238, 1)',
+                        'rgba(147, 112, 219, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Porcentaje (%)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+    <hr class="mt-5">
+
+    <h4 class="mt-4">Artículos y fuentes de apoyo</h4>
+    <ul>
+        <li><strong>UNESCO (2024)</strong>: <em>El impacto de la IA en la educación global</em>.</li>
+        <li><strong>Statista (2023)</strong>: <em>Consumo de plataformas inteligentes en entretenimiento</em>.</li>
+        <li><strong>World Economic Forum (2023)</strong>: <em>El futuro del trabajo automatizado</em>.</li>
+        <li><strong>Nature (2022)</strong>: <em>Inteligencia artificial aplicada a la salud</em>.</li>
+        <li><strong>MIT Technology Review (2023)</strong>: <em>¿Nos volvemos dependientes de los algoritmos?</em>.</li>
+        <li><strong>OECD AI Policy Observatory</strong>: <em>Gobernanza y riesgos del uso excesivo de IA</em>.</li>
+        <li><strong>Harvard Business Review (2023)</strong>: <em>IA y toma de decisiones en entornos laborales</em>.</li>
+    </ul>
+</div>
+{% endblock %}
